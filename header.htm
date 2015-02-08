@@ -3,6 +3,7 @@
 <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 <meta content="utf-8" http-equiv="encoding">
 <title>Welcome to my test page</title>
+</head>
 <link rel="stylesheet" type="text/css" href="/ajaxgpio.css">
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
@@ -11,10 +12,20 @@ $(function(){
     });
 </script>
 <script>
-	var url = "GetJSON";
+	var AJAX_Server =""
+	var JSONurl = AJAX_Server + "/GetJSON";
+	updateIntervalsetting=10;
 </script>
 <script src="/ajaxgpio.js"></script>
+<script src="/ajaxgpio2.js"></script>
 <body>
+<h1>Switch control page</h1>
 <div id="includedContent"></div>
+<div>
+<button type="button" onclick="if(updateInterval!=null){update(); window.clearInterval(updateInterval); current_time=updateIntervalsetting; updateInterval = window.setInterval('countdown_timer()', 1000);}else{update();}">UPDATE NOW</button>
+<div><input type="checkbox" id="autoupdate_checkbox" name="autoupdate_checkbox" class="switch" onclick="toggleInterval()"/>
+<label for="autoupdate_checkbox" id="autoupdate_checkbox_label">Auto-Update?</label></div>
+
+</div>
 </body>
 </html>

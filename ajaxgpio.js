@@ -1,8 +1,10 @@
 var xmlhttp = new XMLHttpRequest();
+var current_time = updateIntervalsetting;
+var updateInterval;
 
 function update()
 {
-xmlhttp.open("GET", url, true);
+xmlhttp.open("GET", JSONurl, true);
 xmlhttp.send();
 }
 
@@ -20,7 +22,7 @@ function ProcessJSON(arr) {
     for(i = 0; i < arr.length; i++) 
     {
         document.getElementById("checkbox" + arr[i].gpio).checked = arr[i].state;
-			console.log("document.getElementById(\"checkbox\"" + arr[i].gpio + ").checked = " + arr[i].state);
+			console.log("document.getElementById(\"checkbox" + arr[i].gpio + "\").checked = " + arr[i].state);
 
     }
 }
@@ -36,10 +38,7 @@ else
   {
   xmlhttp2=new ActiveXObject("Microsoft.XMLHTTP");
   }
-xmlhttp2.open("GET","gpio=" + gpio+".pht",true);
+xmlhttp2.open("GET", AJAX_Server + "/gpio=" + gpio,true);
 xmlhttp2.send();
 }
-setInterval(function(){update()}, 10000);
-update();
-
 

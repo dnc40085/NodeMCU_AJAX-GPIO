@@ -5,8 +5,7 @@ if file.open("LLbin.lua") then --This part is for LuaLoader v0.83 it can be eras
 end;
 if true then  --If false, script ends here
 wifi.setmode(wifi.STATION);
---wifi.sta.config("YOUR SSID","YOUR PASSWORD")
-wifi.sta.config("HOME-2502","c76fc3d4a8")
+wifi.sta.config("YOUR SSID","YOUR PASSWORD")
 count=0
 wait_wifi = function()
 count = count + 1
@@ -19,6 +18,7 @@ print("Wifi connect timed out.")
 else
 wifi_connected = true
 print("Got IP "..wifi_ip.."\n")
+collectgarbage()
 if file.open("main.lua") then dofile("main.lua"); print("\nReady!\r\n") else print("main.lua not present"); print("\nReady!"); end
 wait_wifi=nil
 init=nil
@@ -29,3 +29,4 @@ wait_wifi()
 else
 print("\nReady!\r\n")
  end
+collectgarbage()
